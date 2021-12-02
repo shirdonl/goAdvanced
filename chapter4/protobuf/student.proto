@@ -1,0 +1,21 @@
+syntax = "proto3";  // 指定语法格式
+package  proto;      // 指定生成的student.pb.go 的包名
+
+//定义开放调用的服务
+service  StudentService {
+//定义服务内的 GetStudentInfo 远程调用
+  rpc  GetStudentInfo (Request) returns (Response) {
+  }
+}
+
+message  Request {
+  string  name = 1;
+}
+
+//定义服务端响应的数据格式
+message  Response {
+  int32  uid = 1;
+  string  username = 2;
+  string  grade = 3;
+  repeated  string  goodAt = 4;
+}
