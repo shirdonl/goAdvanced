@@ -1,10 +1,19 @@
+//++++++++++++++++++++++++++++++++++++++++
+// 《Go语言高级开发与实战》源码
+//++++++++++++++++++++++++++++++++++++++++
+// Author:廖显东（ShirDon）
+// Blog:https://www.shirdon.com/
+// 知乎：https://www.zhihu.com/people/shirdonl
+// 公众号:源码大数据
+// 仓库地址：https://gitee.com/shirdonl/goAdvanced
+// 仓库地址：https://github.com/shirdonl/goAdvanced
+//++++++++++++++++++++++++++++++++++++++++
+
 package main
 
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/goinggo/mapstructure"
-	"testing"
 )
 
 func main() {
@@ -31,17 +40,4 @@ func main() {
 		fmt.Println("MapToJsonDemo err: ", err)
 	}
 	fmt.Println(string(jsonStr))
-}
-
-func TestMapToStruct(t *testing.T) {
-	mapInstance := make(map[string]interface{})
-	mapInstance["Name"] = "liang637210"
-	mapInstance["Age"] = 28
-
-	var people People
-	//将 map 转换为指定的结构体
-	if err := mapstructure.Decode(mapInstance, &people); err != nil {
-		t.Fatal(err)
-	}
-	t.Logf("map2struct后得到的 struct 内容为:%v", people)
 }

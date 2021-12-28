@@ -6,33 +6,22 @@ import (
 )
 
 type Programmer struct {
-	Name string
-	Age  int
+	FirstName string
+	GoodAt    string
 }
-
-type ProgrammerSlice []Programmer
-
-func (s ProgrammerSlice) Len() int           { return len(s) }
-func (s ProgrammerSlice) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
-func (s ProgrammerSlice) Less(i, j int) bool { return s[i].Age < s[j].Age }
 
 func main() {
-	a := ProgrammerSlice{
-		{
-			Name: "Barry",
-			Age:  30,
-		},
-		{
-			Name: "Jack",
-			Age:  22,
-		},
-		{
-			Name: "Jim",
-			Age:  18,
-		},
+	members := []Programmer{
+		{"Jack", "PHP"},
+		{"Jane", "JAVA"},
+		{"Barry", "Go"},
 	}
-	sort.Stable(a)
-	fmt.Println(a)
-}
 
-//[{Jim 18} {Jack 22} {Barry 30}]
+	fmt.Println(members)
+
+	sort.Slice(members, func(i, j int) bool {
+		return members[i].GoodAt < members[j].GoodAt || members[i].FirstName < members[j].FirstName
+	})
+
+	fmt.Println(members)
+}
